@@ -11,6 +11,7 @@ import {
 import { useState, useRef } from 'react'
 import { Global } from '@emotion/core'
 
+import { useContext } from './context'
 import SkipLink from './skip-link'
 import Header from './header'
 import Footer from './footer'
@@ -25,15 +26,27 @@ const modes = [
   'dark',
 ]
 
+const themes = [
+  'default',
+  'spicy',
+]
+
 export default props => {
   const [ menuOpen, setMenuOpen ] = useState(false)
   const [ mode, setMode ] = useColorMode()
+  const { theme, setTheme } = useContext()
   const nav = useRef(null)
 
   const cycleMode = e => {
     const i = modes.indexOf(mode)
     const next = modes[(i + 1) % modes.length]
     setMode(next)
+  }
+
+  const cycleTheme = e => {
+    const i = themes.indexOf(theme)
+    const next = themes[(i + 1) % themes.length]
+    setTheme(next)
   }
 
   return (
@@ -64,6 +77,26 @@ export default props => {
           <NavLink to='/'>Theme UI</NavLink>
           <Box mx='auto' />
           <NavLink href='https://github.com/system-ui/theme-ui'>GitHub</NavLink>
+          <label>
+            Theme
+            <select
+              value={theme}
+              onChange={e => {
+                setTheme(e.target.value)
+              }}>
+              {themes.map(t => (
+                <option
+                  key={t}
+                  children={t}
+                />
+              ))}
+            </select>
+          </label>
+          <Button
+            title='Next theme'
+            onClick={cycleTheme}>
+            ➜
+          </Button>
           <Button
             css={{
               ml: 2,
