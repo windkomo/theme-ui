@@ -7,19 +7,14 @@ import {
   Styled
 } from 'theme-ui'
 import { useState } from 'react'
-import merge from 'lodash.merge'
-
-import {
-  toStyles,
-  toTheme,
-} from 'theme-ui-typography'
+import { toTheme } from 'theme-ui-typography'
 
 import Layout from './layout'
 import GoogleFonts from './google-fonts'
 import Button from './button'
 import themes from './typography-themes'
 import typographyThemes from './typography-themes'
-import baseTheme from '../theme'
+import defaultTheme from '../themes/default'
 
 const themeNames = Object.keys(themes)
 
@@ -51,49 +46,17 @@ const ThemeSelect = props =>
     </select>
   </div>
 
-const createTheme = (typographyTheme, method) => {
-  switch (method) {
-    case 'styles':
-      const typography = toStyles(typographyTheme)
-      return merge({}, baseTheme, {
-        styles: typography.styles,
-        typography
-      })
-    case 'theme':
-    default:
-      return toTheme(typographyTheme)
-  }
-}
-
-const methods = [
-  'theme',
-  'styles',
-]
 
 export default props => {
   const [ themeName, setTheme ] = useState(themeNames[0])
-  const [ method, setMethod ] = useState('theme')
-
-  const cycleMethod = e => {
-    const i = methods.indexOf(method) + 1
-    setMethod(methods[i % methods.length])
-  }
-
   const typographyTheme = typographyThemes[themeName]
-  const theme = createTheme(typographyTheme, method)
+  const theme = toTheme(typographyTheme)
 
   return (
     <Layout {...props}>
       <Flex
         py={4}
         alignItems='center'>
-        <Button
-          css={{
-            mr: 2,
-          }}
-          onClick={cycleMethod}>
-          {method}
-        </Button>
         <ThemeSelect
           name='theme'
           value={themeName}

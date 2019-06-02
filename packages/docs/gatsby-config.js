@@ -5,7 +5,7 @@ const remarkPlugins = [
 module.exports = {
   __experimentalThemes: [],
   plugins: [
-    'gatsby-plugin-theme-ui',
+    // 'gatsby-plugin-theme-ui',
     'gatsby-plugin-catch-links',
     {
       resolve: 'gatsby-plugin-mdx',
@@ -13,7 +13,25 @@ module.exports = {
         extensions: [ '.mdx', '.md' ],
         remarkPlugins,
         gatsbyRemarkPlugins: [
-          'gatsby-remark-prismjs',
+          {
+            resolve: 'gatsby-remark-prismjs',
+            options: {
+              aliases: {
+                sh: 'bash',
+                js: 'javascript',
+              },
+              noInlineHighlight: true,
+            }
+          },
+        ]
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-google-fonts',
+      options: {
+        fonts: [
+          'Poppins:500,800',
+          'Roboto Mono:400,700',
         ]
       }
     },

@@ -8,6 +8,7 @@ const styles = {
   px: 2,
   py: 2,
   color: 'inherit',
+  fontSize: 1,
   textDecoration: 'none',
   fontWeight: 'bold',
   '&.active': {

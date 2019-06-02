@@ -47,7 +47,10 @@ export default React.forwardRef((props, ref) =>
           listStyle: 'none',
           m: 0,
           p: 0,
-        }
+        },
+        a: {
+          fontSize: 1,
+        },
       }}>
       <MDXProvider components={components}>
         <Content />

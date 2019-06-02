@@ -1,0 +1,23 @@
+import {
+  ThemeProvider,
+  Container,
+  Box
+} from 'theme-ui'
+
+export default props =>
+  <ThemeProvider
+    theme={{
+      styles: {
+        h1: {
+          fontSize: [5, 6],
+        }
+      }
+    }}>
+    <Container py={[ 5, 6 ]}>
+      {props.children}
+    </Container>
+  </ThemeProvider>
+
+# Theme UI
+
+Build consistent, themeable UIs based on design system contraints and design tokens

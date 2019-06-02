@@ -8,9 +8,10 @@ import {
   Container,
   useColorMode,
 } from 'theme-ui'
-import { useState, useRef } from 'react'
+import { useState, useRef, useContext } from 'react'
 import { Global } from '@emotion/core'
 
+import { Context } from './context'
 import SkipLink from './skip-link'
 import Header from './header'
 import Footer from './footer'
@@ -28,6 +29,7 @@ const modes = [
 export default props => {
   const [ menuOpen, setMenuOpen ] = useState(false)
   const [ mode, setMode ] = useColorMode()
+  const { theme, cycleTheme } = useContext(Context)
   const nav = useRef(null)
 
   const cycleMode = e => {
@@ -64,6 +66,9 @@ export default props => {
           <NavLink to='/'>Theme UI</NavLink>
           <Box mx='auto' />
           <NavLink href='https://github.com/system-ui/theme-ui'>GitHub</NavLink>
+          <Button onClick={cycleTheme}>
+            {theme}
+          </Button>
           <Button
             css={{
               ml: 2,
@@ -72,6 +77,7 @@ export default props => {
             {mode}
           </Button>
         </Header>
+        {props.banner}
         <Main>
           <Container
             css={{
