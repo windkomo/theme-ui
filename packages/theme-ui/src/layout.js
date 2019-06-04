@@ -1,11 +1,9 @@
 import jsx from './jsx'
 import styled from '@emotion/styled'
-import {
-  space,
-  color,
-  layout,
-  flexbox,
-} from 'styled-system'
+import space from '@styled-system/space'
+import color from '@styled-system/color'
+import layout from '@styled-system/layout'
+import flexbox from '@styled-system/flexbox'
 import css from '@styled-system/css'
 
 export const Box = styled('div')(css({

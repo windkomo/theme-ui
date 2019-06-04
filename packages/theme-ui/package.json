@@ -18,10 +18,13 @@
     "@mdx-js/react": "^1.0.0"
   },
   "dependencies": {
+    "@styled-system/color": "^5.0.5",
     "@styled-system/css": "^5.0.5",
+    "@styled-system/flexbox": "^5.0.5",
+    "@styled-system/layout": "^5.0.5",
+    "@styled-system/space": "^5.0.5",
     "lodash.merge": "^4.6.0",
-    "react": "^16.8.0",
-    "styled-system": "^5.0.5"
+    "react": "^16.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
