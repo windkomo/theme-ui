@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`converts css prop to @styled-system/css call 1`] = `
+"\\"use strict\\";
+
+var _interopRequireDefault = require(\\"@babel/runtime/helpers/interopRequireDefault\\");
+
+Object.defineProperty(exports, \\"__esModule\\", {
+  value: true
+});
+exports[\\"default\\"] = void 0;
+
+var _extends2 = _interopRequireDefault(require(\\"@babel/runtime/helpers/extends\\"));
+
+var _themeUi = require(\\"theme-ui\\");
+
+/** @jsx jsx */
+var _default = function _default(props) {
+  return (0, _themeUi.jsx)(\\"div\\", (0, _extends2[\\"default\\"])({}, props, {
+    css: {
+      m: 0,
+      bg: 'primary'
+    }
+  }));
+};
+
+exports[\\"default\\"] = _default;"
+`;
+
+exports[`works with emotion preset 1`] = `
+"\\"use strict\\";
+
+var _interopRequireDefault = require(\\"@babel/runtime/helpers/interopRequireDefault\\");
+
+Object.defineProperty(exports, \\"__esModule\\", {
+  value: true
+});
+exports[\\"default\\"] = void 0;
+
+var _core = require(\\"@emotion/core\\");
+
+var _extends2 = _interopRequireDefault(require(\\"@babel/runtime/helpers/extends\\"));
+
+var _themeUi = require(\\"theme-ui\\");
+
+/** @jsx jsx */
+var _ref = process.env.NODE_ENV === \\"production\\" ? {
+  name: \\"4ep6w8\\",
+  styles: \\"m:0;bg:primary;\\"
+} : {
+  name: \\"4ep6w8\\",
+  styles: \\"m:0;bg:primary;\\",
+  map: \\"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVua25vd24iXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBTUkiLCJmaWxlIjoidW5rbm93biIsInNvdXJjZXNDb250ZW50IjpbIi8qKiBAanN4IGpzeCAqL1xuaW1wb3J0IHsganN4IH0gZnJvbSAndGhlbWUtdWknXG5cbmV4cG9ydCBkZWZhdWx0IHByb3BzID0+XG4gIDxkaXZcbiAgICB7Li4ucHJvcHN9XG4gICAgY3NzPXt7XG4gICAgICBtOiAwLFxuICAgICAgYmc6ICdwcmltYXJ5JyxcbiAgICB9fVxuICAvPlxuIl19 */\\"
+};
+
+var _default = function _default(props) {
+  return (0, _themeUi.jsx)(\\"div\\", (0, _extends2[\\"default\\"])({}, props, {
+    css: _ref
+  }));
+};
+
+exports[\\"default\\"] = _default;"
+`;
