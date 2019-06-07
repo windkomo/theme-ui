@@ -36,7 +36,8 @@ test('works with emotion preset', () => {
       '@babel/plugin-transform-runtime',
     ],
   })
-  expect(code).toMatch(/background-color:primary;/)
-  expect(code).toMatch(/margin:0;/)
+  expect(code).toMatch(/bg: \'primary\',/)
+  expect(code).toMatch(/m: 0,/)
+  // console.log(code)
   // expect(code).toMatchSnapshot()
 })
