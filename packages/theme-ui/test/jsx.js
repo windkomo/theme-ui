@@ -29,7 +29,10 @@ test('converts css prop to @styled-system/css call', () => {
 test('works with emotion preset', () => {
   const { code } = transformSync(fixture, {
     presets: [
-      '@emotion/babel-preset-css-prop',
+      [ '@emotion/babel-preset-css-prop', {
+        // not forwarded to babel-plugin-emotion
+        cssPropOptimization: false
+      } ],
       '@babel/preset-react',
     ],
     plugins: [
