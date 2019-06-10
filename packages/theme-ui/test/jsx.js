@@ -26,12 +26,25 @@ test('converts css prop to @styled-system/css call', () => {
   expect(code).toMatchSnapshot()
 })
 
-test('works with emotion preset', () => {
-  const { code } = transformSync(fixture, {
+const alt =
+`/** @jsx jsx */
+import { jsx } from 'theme-ui'
+
+export default props =>
+  <div
+    cx={{
+      m: 0,
+      bg: 'primary'
+    }}
+  />
+`
+
+test.only('works with emotion preset', () => {
+  const { code } = transformSync(alt, {
     presets: [
       [ '@emotion/babel-preset-css-prop', {
         // not forwarded to babel-plugin-emotion
-        cssPropOptimization: false
+        // cssPropOptimization: false
       } ],
       '@babel/preset-react',
     ],
@@ -39,7 +52,8 @@ test('works with emotion preset', () => {
       '@babel/plugin-transform-runtime',
     ],
   })
-  expect(code).toMatch(/bg: \'primary\',/)
+  console.log({ code })
+  expect(code).toMatch(/bg: \'primary\'/)
   expect(code).toMatch(/m: 0,/)
   // console.log(code)
   // expect(code).toMatchSnapshot()
