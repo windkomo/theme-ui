@@ -59,7 +59,10 @@ test('useColorMode updates color mode state', () => {
     )
   }
   const tree = render(
-    <ThemeProvider>
+    <ThemeProvider
+      theme={{
+        initialColorMode: 'light',
+      }}>
       <Button />
     </ThemeProvider>
   )
@@ -181,7 +184,7 @@ test('retains initial context', () => {
   expect(context.components.blockquote).toBeTruthy()
 })
 
-test('initializes mode from prefers-color-scheme media query', () => {
+test.skip('initializes mode from prefers-color-scheme media query', () => {
   window.matchMedia = jest.fn().mockImplementation(query => {
     return {
       matches: true,
@@ -202,7 +205,7 @@ test('initializes mode from prefers-color-scheme media query', () => {
   expect(mode).toBe('dark')
 })
 
-test('does not initialize mode from prefers-color-scheme media query', () => {
+test.skip('does not initialize mode from prefers-color-scheme media query', () => {
   window.matchMedia = jest.fn().mockImplementation(query => {
     return {
       matches: false,
@@ -255,6 +258,8 @@ test('ColorMode component renders with colors', () => {
 })
 
 test('useColorMode throws when there is no theme context', () => {
+  jest.spyOn(console, 'error')
+  console.error.mockImplementation(() => {})
   expect(() => {
     const Consumer = props => {
       const [ colorMode ] = useColorMode('beep')
@@ -264,5 +269,6 @@ test('useColorMode throws when there is no theme context', () => {
     render(
       <Consumer />
     )
-  }).toThrow()
+  }).toThrowErrorMatchingSnapshot('ThemeProvider')
+  console.error.mockRestore()
 })

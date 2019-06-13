@@ -8,7 +8,6 @@ import {
   Context,
   Styled,
   jsx,
-  useColorMode,
 } from '../src/index'
 
 expect.extend(matchers)
@@ -40,7 +39,7 @@ test('renders with styles', () => {
   expect(json).toMatchSnapshot()
 })
 
-test('creates non-standard components', () => {
+test.skip('creates non-standard components', () => {
   const json = renderJSON(
     <ThemeProvider
       components={{
@@ -60,7 +59,7 @@ test('creates non-standard components', () => {
   expect(json).toHaveStyleRule('color', 'tomato')
 })
 
-test('styles React components', () => {
+test.skip('styles React components', () => {
   const Beep = props => <h2 {...props} />
   const Inner = props => {
     const context = useContext(Context)

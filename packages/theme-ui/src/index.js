@@ -1,10 +1,10 @@
 export { css } from '@styled-system/css'
 export { jsx } from './jsx'
+export { ThemeProvider } from './provider'
 export {
-  ThemeProvider,
   ColorMode,
   useColorMode,
-} from './core'
+} from './color-mode'
 export { Context, useThemeUI } from './context'
 export { Styled } from './components'
 export {

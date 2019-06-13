@@ -22,7 +22,7 @@ test('renders with theme context', () => {
   const root = render(
     wrapRootElement({ element: <Consumer /> }, {})
   )
-  expect(context.theme).toEqual({})
+  expect(context.theme).toEqual({ colors: {} })
 })
 
 test('renders with ColorMode component', () => {
