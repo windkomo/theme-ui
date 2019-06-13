@@ -31,6 +31,7 @@ export const ThemeProvider = props => {
     theme,
     setTheme,
   })
+  console.log(context.theme)
 
   context.theme = {
     ...theme,
@@ -48,9 +49,9 @@ export const ThemeProvider = props => {
     setColorMode(stored)
   }, [])
 
-  return jsx(Context.Provider, { value: context },
-    jsx(Emotion.Provider, { value: context.theme },
-      jsx(MDXProvider, { components: context.components },
+  return jsx(Emotion.Provider, { value: context.theme },
+    jsx(MDXProvider, { components: context.components },
+      jsx(Context.Provider, { value: context },
         jsx(ColorMode, { key: 'color-mode' }),
         props.children
       )

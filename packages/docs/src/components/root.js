@@ -1,13 +1,11 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import { ThemeProvider } from 'theme-ui'
 import pkg from 'theme-ui/package.json'
+// import { ThemeProvider } from 'theme-ui'
 // import components from './mdx-components'
 
-import theme from '../gatsby-theme-ui'
-
 export default props =>
-  <ThemeProvider theme={theme}>
+  <>
     <Helmet>
       <title>Theme UI</title>
       <meta name='description' content={pkg.description} />
@@ -20,4 +18,4 @@ export default props =>
       <meta name='twitter:description' content={pkg.description} />
     </Helmet>
     {props.children}
-  </ThemeProvider>
+  </>
